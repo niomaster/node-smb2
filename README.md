@@ -92,14 +92,13 @@ smb2Client.writeFile('path\\to\\my\\file.txt', 'Hello Node', function (err) {
 - ```filename``` String
 - ```options``` Object
 
-Create a stream.Readable for a file. See [stream.Readable()](http://nodejs.org/api/stream.html#stream_new_stream_readable_options) for the available options.
+Create a ```stream.Readable``` for a file. See [stream.Readable()](http://nodejs.org/api/stream.html#stream_new_stream_readable_options) for the available options.
 
 Example:
 ```javascript
 var http = require('http');
 
 http.createServer(function(req, res) {
-    
     var readable = smb2Client.createReadStream('path\\to\\my\\file.txt');
 
     readable.on('data', function(chunk) {
@@ -109,7 +108,6 @@ http.createServer(function(req, res) {
     readable.on('end', function() {
         res.end();
     });
-
 }).listen(80);
 ```
 
