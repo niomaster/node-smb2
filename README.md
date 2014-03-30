@@ -88,6 +88,32 @@ smb2Client.writeFile('path\\to\\my\\file.txt', 'Hello Node', function (err) {
 });
 ```
 
+### smb2Client.createReadStream( filename, [options] )
+- ```filename``` String
+- ```options``` Object
+
+Create a stream.Readable for a file. See [stream.Readable()](http://nodejs.org/api/stream.html#stream_new_stream_readable_options) for the available options.
+
+Example:
+```javascript
+var http = require('http');
+
+http.createServer(function(req, res) {
+    
+    var readable = smb2Client.createReadStream('path\\to\\my\\file.txt');
+
+    readable.on('data', function(chunk) {
+        res.write(chunk);
+    });
+
+    readable.on('end', function() {
+        res.end();
+    });
+
+}).listen(80);
+```
+
+
 ### smb2Client.mkdir ( path, [mode], callback )
 Asynchronous mkdir(2). No arguments other than a possible exception are given to the completion callback. mode defaults to 0777.
 
